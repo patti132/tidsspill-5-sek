@@ -1,0 +1,59 @@
+input.onButtonPressed(Button.A, function () {
+    if (input.buttonIsPressed(Button.A)) {
+        basic.pause(2000)
+        serial.writeString("Dette var ikke bra, du Må få et bedre RESULTAT!!!")
+        serial.writeLine("")
+        led.stopAnimation()
+    } else {
+    	
+    }
+})
+let Juksemodus = 0
+let resultat = 0
+let Forsøk = 0
+let tid1 = 0
+let tid2 = 0
+serial.redirectToUSB()
+basic.showString("TS v1", 60)
+serial.writeLine("𝙑𝙚𝙡𝙠𝙤𝙢𝙢𝙚𝙣 𝙩𝙞𝙡 𝙏𝙞𝙙𝙨𝙨𝙥𝙞𝙡𝙡 𝙫1")
+basic.forever(function () {
+    let tid12: number;
+let grense: number;
+let tid22: number;
+if (input.buttonIsPressed(Button.A)) {
+        basic.showNumber(Forsøk)
+        Forsøk += 1
+        serial.writeString("𝐅𝐨𝐫𝐬ø𝐤:")
+        serial.writeNumber(Forsøk)
+        serial.writeLine("")
+        tid12 = input.runningTimeMicros()
+        grense = 1
+        while (input.buttonIsPressed(Button.A)) {
+        	
+        }
+        tid22 = input.runningTimeMicros()
+        serial.writeLine("")
+        resultat = (tid22 - tid12) / 1000000
+        // basic.show_number(resultat,60)
+        serial.writeString("𝐃𝐢𝐭𝐭 𝐑𝐞𝐬𝐮𝐥𝐭𝐚𝐭:")
+        serial.writeNumber(resultat)
+        serial.writeLine("")
+        music.playTone(262, music.beat(BeatFraction.Whole))
+    }
+    if (input.logoIsPressed()) {
+        basic.showNumber(Forsøk)
+        Forsøk += 1
+        serial.writeString("𝐅𝐨𝐫𝐬ø𝐤:")
+        serial.writeNumber(Forsøk)
+        serial.writeLine("")
+        basic.showNumber(Juksemodus)
+        Juksemodus = 5000
+        serial.writeString("𝐃𝐢𝐭𝐭 𝐑𝐞𝐬𝐮𝐥𝐭𝐚𝐭:")
+        serial.writeNumber(Juksemodus)
+        serial.writeLine("")
+        music.playTone(262, music.beat(BeatFraction.Whole))
+    }
+})
+basic.forever(function () {
+	
+})
